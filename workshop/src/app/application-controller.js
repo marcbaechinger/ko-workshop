@@ -36,18 +36,22 @@
 				that.model.selectedCredential().password(pwd);
 			} catch (e) {
 				alert("encrypting failed: " + e.message);
-				that.removeSecret();
+				that.model.secret(null);
 			}
 		};
 		this.showCleartextPassword = function () {
 			var pwd;
 			if (!that.cleartextTimeout) {
-				pwd = sjcl.decrypt(getSecret(), that.model.selectedCredential().password());
-				$("#ct-pwd").html(pwd);
-				that.cleartextTimeout = window.setTimeout(function () {
-					$("#ct-pwd").html("show cleartext");
-					delete that.cleartextTimeout;
-				}, 5000);
+				try {
+					pwd = sjcl.decrypt(getSecret(), that.model.selectedCredential().password());
+					$("#ct-pwd").html(pwd);
+					that.cleartextTimeout = window.setTimeout(function () {
+						$("#ct-pwd").html("show cleartext");
+						delete that.cleartextTimeout;
+					}, 5000);
+				} catch (e) {
+					that.model.secret(null);
+				}
 			}
 		};
 		this.removeSecret = function () {
