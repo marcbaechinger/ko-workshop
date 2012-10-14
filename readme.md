@@ -2,7 +2,8 @@
 
 ## Starting point
 
-<b>git tag:</b> workshop-start
+	# git clone https://github.com/marcbaechinger/ko-workshop.git
+	# git checkout workshop-start
 
 ### technology stack
 
@@ -45,7 +46,7 @@
 
 ## Exercise 1: observable and observableArray: create, add, delete
 
-==> git tag: workshop-start
+	# git checkout workshop-start
 
 ### array template
 * Display all credentials in the #credential-list by using ko DOM templating
@@ -64,25 +65,28 @@
 * add a binding to the delete button
 	* note that the binding is within a foreach template
 	* that's why the current data item of an array is passed to a function binded within the template (cool feature!!)
-
-==> git tag: exercise-1-end
+	
+Get to this stage by git
+	
+	# git checkout exercise-1-end
 
 ## Exercise 2: select item in list and display in edit form
 
-==> git tag: exercise-2-start
+	# git checkout exercise-2-start
 
 * add markup for edit form  => git tag: exercise-2-start
 * add an observable 'selectedCredential' to the application model
 * add bindings to the list item to set the selected credential
 * subscribe to the selection change to set focus on appropriate form field (.site)
 * automatically select a new item on creation and set focus to appropriate form field (.username) 
-=> git tag: exersice-2-end
 
-==> git tag: exercise-2-end
+Get to this stage by git
+
+	# git checkout exercise-2-end
 
 ## Exercise 3: filter list entries
 
-==> git tag: exercise-3-start
+	# git checkout exercise-3-start
 
 * add text field to list form (below button-bar and above the list) => git tag: exercise-3-start
 * add a filter ko.observable() with an empty string
@@ -90,13 +94,14 @@
      * the implementation creates a filtered array of credentials and returns it
 * change binding foreach of the list to the filteredCredentials  
 * add value binding to the text field to set the filter query to the model 
-=> git tag: exercise-3-end
 
-==> git tag: exercise-3-end
+Get to this stage by git
+
+	# git checkout exercise-3-end
 
 ## Exercise 4a: initalize model from and save to local storage
 
-==> git tag: exercise-4-start
+	# git checkout exercise-4-start
 
 * add markup of save button to button bar => git tag: exercise-4-start
 * add save function to the ApplicationModel
@@ -107,14 +112,16 @@
 * add style binding to form element to show it only when a list item is selected
 * add keyup handler to perform save on ctrl-s
 
-==> git tag: exercise-4-end
+Get to this stage by git
+	
+	# git checkout exercise-4-end
 
 ## Exercise 4b: initalize model from and save to remote service
  tbd
 
 ## Exercise 5: encrypt/decrypt passwords with sjcl 
 
-==> git tag: exercise-5-start
+	# git checkout exercise-5-start
 
 ### step 1: encrypt password when entered
 * markup: add markup for 'cleartext password' button below #password-field
@@ -136,7 +143,9 @@
 	* do everyting above in a try-catch block
 * add binding to #password-field to call changePassword() on change
 
-=> git tag: exercise-5-step-1
+Get to this stage by git
+
+	# git checkout exercise-5-step-1
 
 ### step 2: show clear text password
 * delete all items without encrypted passwords to avoid problems
@@ -149,7 +158,9 @@
 	* update the text of #ct-pwd
 * add click binding to #ct-pwd to call showCleartextPassword()
 
-=> git tag: exercise-5-step-2
+Get to this stage by git
+
+	# git checkout exercise-5-step-2
 
 ### step 3: improvements
 * change impl of function showCleartextPassword to erase display of cleartext password after 5 sec.
@@ -161,7 +172,9 @@
 	* unset the secret in the model
 * add binding to #key to call removeSecret() on click
 
-=> git tag: exercise-5-end
+Get to this stage by git
+	
+	# git checkout exercise-5-end
 
 ## Bugfixes
 * clear secret when encryption fails
