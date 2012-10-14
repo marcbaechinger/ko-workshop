@@ -64,7 +64,8 @@
 							<input id="password-field" type="text" class="span9 password"
 								placeholder="enter password"
 								data-bind="event: {change: theapp.app.changePassword}"/>
-							<span id="ct-pwd" class="label">show cleartext</span>
+							<span id="ct-pwd" class="label"
+								data-bind="click: theapp.app.showCleartextPassword">show cleartext</span>
 						</label>
 					</form>
 				</div>

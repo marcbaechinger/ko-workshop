@@ -38,6 +38,10 @@
 				that.removeSecret();
 			}
 		};
+		this.showCleartextPassword = function () {
+			var pwd = sjcl.decrypt(getSecret(), that.model.selectedCredential().password());
+			$("#ct-pwd").html(pwd);
+		};
 		this.model.selectedCredential.subscribe(function (newValue) {
 			var pwdEncryptionData, 
 				placeholder;
