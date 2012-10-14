@@ -121,14 +121,14 @@ header ul.head {
   width:270px;
 }
 
-header li {
+header ul.head li {
   width:89px;
   float:left;
   border-right:1px solid #d2d2d2;
   height:40px;
 }
 
-header ul a {
+header ul.head a {
   line-height:1;
   font-size:11px;
   color:#999;
