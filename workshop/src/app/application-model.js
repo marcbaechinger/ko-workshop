@@ -13,7 +13,8 @@
 	var ApplicationModel = function () {
 		var that = this,
 			nextId = 1;
-			
+		
+		this.secret = ko.observable();
 		this.selectedCredential = ko.observable();
 		this.credentials = ko.observableArray([]);
 		this.filter = ko.observable();

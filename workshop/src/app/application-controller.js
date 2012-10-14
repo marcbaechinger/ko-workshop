@@ -2,12 +2,13 @@
 	
 	var ApplicationController = function () {
 		var that = this,
-			secretKey,
 			getSecret = function () {
-				if (typeof secretKey === "undefined") {
+				var secretKey;
+				if (!that.model.secret()) {
 					secretKey = prompt("Enter master pass phrase");
+					that.model.secret(secretKey);
 				}
-				return secretKey;
+				return that.model.secret();
 			};
 		this.passwordField = $("#password-field");
 		
@@ -48,6 +49,9 @@
 					delete that.cleartextTimeout;
 				}, 5000);
 			}
+		};
+		this.removeSecret = function () {
+			that.model.secret(null);
 		};
 		this.model.selectedCredential.subscribe(function (newValue) {
 			var pwdEncryptionData, 
