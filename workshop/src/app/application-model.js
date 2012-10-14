@@ -47,6 +47,25 @@
 		this.removeCredential = function (credential) {
 			that.credentials.remove(credential);
 		};
+		
+		this.save = function () {
+			localStorage.credentials = ko.toJSON(this.credentials);
+		};
+		this.load = function () {
+			var credentials, 
+				credential, i;
+			if (localStorage.credentials) {
+				credentials = JSON.parse(localStorage.credentials);
+				for (i = 0; i < credentials.length; i++) {
+					this.credentials.push(new Credentials(
+						credentials[i].id,
+						credentials[i].site,
+						credentials[i].username,
+						credentials[i].password
+					));
+				}
+			}
+		};
 	};
 	
 	namespace("theapp", {
