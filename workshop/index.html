@@ -43,7 +43,8 @@
 						</ul>
 					</section>
 					
-					<form id="edit-form" class="span8 clearfix">
+					<form id="edit-form" class="span8 clearfix" 
+						data-bind="style: { display: selectedCredential() ? 'block' : 'none' }">
 						<legend>Edit credential</legend>
 					    <label class="row-fluid">
 							<span class="span3">Site</span>

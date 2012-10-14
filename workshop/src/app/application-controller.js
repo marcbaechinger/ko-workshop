@@ -21,6 +21,12 @@
 				$("#edit-form .site").focus();
 			}
 		});
+		
+		$(document).bind("keyup", function (ev) {
+			if (ev.ctrlKey && ev.which === 83) {
+				that.model.save();
+			}
+		});
 	};
 	
 	ApplicationController.prototype.init = function() {
