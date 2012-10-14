@@ -38,10 +38,17 @@
 				that.removeSecret();
 			}
 		};
-		
 		this.model.selectedCredential.subscribe(function (newValue) {
+			var pwdEncryptionData, 
+				placeholder;
 			if (newValue) {
 				$("#edit-form .site").focus();
+				
+				that.passwordField.val("");
+				pwdEncryptionData = newValue.password();
+				
+				placeholder = pwdEncryptionData ? JSON.parse(pwdEncryptionData).iv : "enter password";
+				that.passwordField.attr("placeholder", placeholder);
 			}
 		});
 		
