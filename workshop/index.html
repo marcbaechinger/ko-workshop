@@ -34,7 +34,8 @@
 							<li>
 								<b><span data-bind="text: site"></span></b>
 								(<span data-bind="text: username"></span>)
-								<button class="btn btn-mini btn-danger">delete</button>
+								<button class="btn btn-mini btn-danger"
+									data-bind="click: theapp.app.model.removeCredential">delete</button>
 							</li>
 						</ul>
 					</form>

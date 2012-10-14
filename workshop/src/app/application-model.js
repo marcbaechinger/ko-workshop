@@ -11,7 +11,8 @@
 		};
 
 	var ApplicationModel = function () {
-		var nextId = 1;
+		var that = this,
+			nextId = 1;
 		
 		this.credentials = ko.observableArray([
 			new Credentials(1, "Facebook", "marcbaechinger", "secret"),
@@ -21,6 +22,10 @@
 		this.createCredential = function (site) {
 			var credentials = new Credentials(nextId++, site);
 			this.credentials.push(credentials);
+		};
+		
+		this.removeCredential = function (credential) {
+			that.credentials.remove(credential);
 		};
 	};
 	
