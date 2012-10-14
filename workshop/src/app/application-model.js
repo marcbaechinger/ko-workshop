@@ -13,7 +13,8 @@
 	var ApplicationModel = function () {
 		var that = this,
 			nextId = 1;
-		
+			
+		this.selectedCredential = ko.observable();
 		this.credentials = ko.observableArray([
 			new Credentials(1, "Facebook", "marcbaechinger", "secret"),
 			new Credentials(1, "Twitter", "marc", "verysecret")

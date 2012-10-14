@@ -31,11 +31,11 @@
 						</div>
 						<ul id="credential-list" class="span12"
 							data-bind="foreach: credentials">
-							<li>
+							<li data-bind="click: $parent.selectedCredential">
 								<b><span data-bind="text: site"></span></b>
 								(<span data-bind="text: username"></span>)
 								<button class="btn btn-mini btn-danger"
-									data-bind="click: theapp.app.model.removeCredential">delete</button>
+									data-bind="click: $parent.removeCredential">delete</button>
 							</li>
 						</ul>
 					</form>
@@ -44,17 +44,22 @@
 						<legend>Edit credential</legend>
 					    <label class="row-fluid">
 							<span class="span3">Site</span>
-							<input  type="text" class="span9 site"/>
+							<input  type="text" class="span9 site" 
+								data-bind="value: selectedCredential() ? selectedCredential().site : ''"/>
 						</label>
 
 					    <label class="row-fluid">
 							<span class="span3">Username</span>
-							<input id="username-field" type="text" class="span9 username" placeholder="enter username"/>
+							<input id="username-field" type="text" class="span9 username" 
+								placeholder="enter username"
+								data-bind="value: selectedCredential() ? selectedCredential().username : ''"/>
 						</label>
 						
 					    <label class="row-fluid">
 							<span class="span3">Password</span>
-							<input id="password-field" type="text" class="span9 password"/>
+							<input id="password-field" type="text" class="span9 password"
+								 placeholder="enter password"
+								 data-bind="value: selectedCredential() ? selectedCredential().password : ''"/>
 						</label>
 					</form>
 				</div>
