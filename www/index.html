@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="app.css"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Knockout.js - Workshop</title>
+        <meta name="viewport" content="width=device-width">
+        <script src="js/modernizr-2.6.2.min.js?plain=true"> </script>
+    </head>
+    <body>
+	    <div class="navbar" id="navbar">
+			<img src="img/logo.gif" id="logo">
+	    	<div class="navbar-inner">
+		    	<a class="brand" href="#">ko workshop</a>
+			    <ul class="nav" data-bind="foreach: views">
+					<li data-bind="attr: {class: styleClass}">
+						<a href="#" data-bind="{click: theapp.app.selectView, text: label}"></a>
+					</li>
+				</ul>
+		    </div>
+			<article id="overlay" data-bind="style: { display: showOverlay() === true ? 'block' : 'none' }">
+				<div class="working"><blink>working...</blink></div>
+			</article>
+	    </div>
+		<article id="content" class="container">
+				<div class="row-fluid">
+					<form id="credential-form" class="span4 clearfix">
+						<legend>Credentials</legend>
+						<div class="button-bar clearfix">
+							<button type="submit" class="btn btn-save" 
+								data-bind="{click: theapp.app.save, disable: credentials().length < 1}">Save</button>
+							<button type="submit" class="btn btn-primary btn-create" 
+								data-bind="click: theapp.app.createCredential">New</button>
+						</div>
+						<input class="span12" type="text" data-bind="value: theapp.app.model.filter"/>
+						<ul id="credential-list" class="span12" 
+							data-bind="{foreach: filteredCredentials, style: { display: credentials().length > 0 ? 'list' : 'none' }}">
+							<li data-bind="click: theapp.app.selectCredential">
+								<b><span data-bind="text: site"></span></b>
+								(<span data-bind="text: username"></span>)
+								<button class="btn btn-mini btn-danger" 
+									data-bind="click: theapp.app.removeCredential">delete</button>
+							</li>
+						</ul>
+					</form>
+		
+					<form id="edit-form" class="span8 clearfix" 
+						data-bind="style: { display: selectedCredential() ? 'block' : 'none' }">
+						<legend>Edit credential</legend>
+					    <label class="row-fluid">
+							<span class="span3">Site</span>
+							<input  type="text" class="span9 site" 
+								data-bind="value: selectedCredential() ? selectedCredential().site : ''"/>
+						</label>
+
+					    <label class="row-fluid">
+							<span class="span3">Username</span>
+							<input id="username-field" type="text" class="span9 username" 
+								data-bind="value: selectedCredential() ? selectedCredential().username : ''" placeholder="enter username"/>
+						</label>
+						
+					    <label class="row-fluid">
+							<span class="span3">Password</span>
+							<input id="password-field" type="text" class="span9 password"
+								data-bind="event: {change: theapp.app.changePassword}" />
+							<span id="ct-pwd" class="label" 
+								data-bind="click: theapp.app.showCleartextPassword">show cleartext</span>
+						</label>
+					</form>
+				</div>
+			<div id="key" data-bind="click: theapp.app.removeSecret" title="remove stored pass phrase"></div>
+		</article>
+		
+		
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-1.8.2.min.js?plain=true"><\/script>')</script>
+        <script src="js/bootstrap.min.js?plain=true"></script>
+        <script src="js/knockout-2.1.0.min.js?plain=true"></script>
+        <script src="js/sjcl.js?plain=true"></script>
+        <script src="app.js?plain=true&expand=true"></script>
+    </body>
+</html>
