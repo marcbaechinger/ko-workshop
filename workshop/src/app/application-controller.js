@@ -4,6 +4,7 @@
 		var that = this;
 		
 		this.model = new theapp.ApplicationModel();
+		this.model.load();
 		
 		this.createCredential = function () {
 			var site = prompt("Name of the site"),
