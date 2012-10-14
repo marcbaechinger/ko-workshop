@@ -34,7 +34,7 @@
 						<input class="span12" type="text" data-bind="value: filter"/>
 						<ul id="credential-list" class="span12"
 							data-bind="foreach: filteredCredentials">
-							<li data-bind="click: $parent.selectedCredential">
+							<li data-bind="click: $parent.selectedCredential" class="clearfix">
 								<b><span data-bind="text: site"></span></b>
 								(<span data-bind="text: username"></span>)
 								<button class="btn btn-mini btn-danger"

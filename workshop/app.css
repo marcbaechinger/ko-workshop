@@ -191,11 +191,34 @@ input[disabled] {
 		width: 100%;
 		margin-bottom: 12px;
 	}
+	
+	.btn.btn-danger {
+		margin-bottom: 0;
+		margin-top: 6px;
+	}
+	
 	.button-bar {
 		padding: 0;
 	}
 	#credential-form legend {
 		margin-bottom: 12px;
+	}
+	form, section {
+		box-shadow: none;
+		border: none;
+		border-radius: 0;
+	}
+	.navbar {
+		margin-bottom: 12px;
+	}
+	.navbar div {
+		border-radius: 0;
+	}
+	#logo {
+		right: 22px;
+	}
+	form {
+		margin-top: 24px;
 	}
 	#key {
 		right: 90px;
