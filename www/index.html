@@ -37,7 +37,7 @@
 							<button type="submit" class="btn btn-primary btn-create" 
 								data-bind="click: theapp.app.createCredential">New</button>
 						</div>
-						<input class="span12" type="text" data-bind="value: theapp.app.model.filter"/>
+						<input class="span12" type="text" data-bind="value: filter"/>
 						<ul id="credential-list" class="span12" 
 							data-bind="{foreach: filteredCredentials, style: { display: credentials().length > 0 ? 'list' : 'none' }}">
 							<li data-bind="click: theapp.app.selectCredential">

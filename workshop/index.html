@@ -23,15 +23,15 @@
 	
 		<article id="content" class="container">
 				<div class="row-fluid">
-					<form id="credential-form" class="span4 clearfix">
+					<section id="credential-form" class="span4 clearfix">
 						<legend>Credentials</legend>
 						<div class="button-bar clearfix">
 							<button type="submit" class="btn btn-primary btn-create"
 								data-bind="click: theapp.app.createCredential">New</button>
 						</div>
-						<input class="span12" type="text"/>
+						<input class="span12" type="text" data-bind="value: filter"/>
 						<ul id="credential-list" class="span12"
-							data-bind="foreach: credentials">
+							data-bind="foreach: filteredCredentials">
 							<li data-bind="click: $parent.selectedCredential">
 								<b><span data-bind="text: site"></span></b>
 								(<span data-bind="text: username"></span>)
@@ -39,7 +39,7 @@
 									data-bind="click: $parent.removeCredential">delete</button>
 							</li>
 						</ul>
-					</form>
+					</section>
 					
 					<form id="edit-form" class="span8 clearfix">
 						<legend>Edit credential</legend>

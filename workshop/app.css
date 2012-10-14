@@ -12,7 +12,7 @@ body, html {
 body {
 	background-color: #71A9E6;
 }
-form {
+form, section {
 	position: relative;
 	background-color: #ededed;
 	border-radius: 6px;
