@@ -28,32 +28,266 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>ko workshop walktrough</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h2>Starting point</h2>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code># git clone https://github.com/marcbaechinger/ko-workshop.git
+# git checkout workshop-start
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>technology stack</h3>
 
-<h3>Designer Templates</h3>
+<ul>
+<li>application boilder plate based on HTML5 boilerplate</li>
+<li>modernizer: cross-device and browser applications readiness</li>
+<li>bootstrap: framework with css grid and css UI tool kit</li>
+<li>jquery: DOM and browser facade; utilities</li>
+<li>knockout.js: knockout library</li>
+</ul><h3>base application files</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ul>
+<li>index.html: contains the application markup</li>
+<li>app.js: starts the applicaiton controller</li>
+<li>app.css: application specific styles</li>
+<li>src/*.js: application javascripts </li>
+</ul><h3>Application markup</h3>
 
-<h3>Rather Drive Stick?</h3>
+<ul>
+<li>Navigation bar on top</li>
+<li>a form element in the bootstrap grid
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li>A header </li>
+<li>a button bar with a button</li>
+<li>a list </li>
+</ul>
+</li>
+</ul><h3>Application javascript</h3>
 
-<h3>Authors and Contributors</h3>
+<ul>
+<li>src/app/application-model.js: an observable model representing our application (view model)</li>
+<li>src/app/application-controller.js: the controller</li>
+</ul><h2>Observables and observable arrays</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>explain the ApplicationModel shortly
 
-<h3>Support or Contact</h3>
+<ul>
+<li><code>ko.observable()</code></li>
+<li><code>ko.observableArray()</code></li>
+</ul>
+</li>
+<li>explain the ApplicationController shortly
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li><code>ko.applyBindings(model, contextElement)</code></li>
+</ul>
+</li>
+</ul><h1>Exercises: Secure password manager</h1>
+
+<h2>Exercise 1: observable and observableArray: create, add, delete</h2>
+
+<pre><code># git checkout workshop-start
+</code></pre>
+
+<h3>array template</h3>
+
+<ul>
+<li>Display all credentials in the #credential-list by using ko DOM templating</li>
+<li>display the <code>site</code> and <code>username</code> for each item in the list</li>
+</ul><h3>create a new credential and add to collection</h3>
+
+<ul>
+<li>add createCredential(sitename) function to the ApplicationModel</li>
+<li>add createCredential() function to the ApplicationController
+
+<ul>
+<li>get sitename from user wth prompt()</li>
+<li>delegate creation to the model</li>
+</ul>
+</li>
+<li>create bindings to new button in the markup</li>
+</ul><h3>remove a existing credential from the list</h3>
+
+<ul>
+<li>add removeCredential(credential) function to the model
+
+<ul>
+<li>it simply removes the credential object passd as param from the observableArray</li>
+</ul>
+</li>
+<li>add a binding to the delete button
+
+<ul>
+<li>note that the binding is within a foreach template</li>
+<li>that's why the current data item of an array is passed to a function binded within the template (cool feature!!)</li>
+</ul>
+</li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-1-end
+</code></pre>
+
+<h2>Exercise 2: select item in list and display in edit form</h2>
+
+<pre><code># git checkout exercise-2-start
+</code></pre>
+
+<ul>
+<li>add markup for edit form  =&gt; git tag: exercise-2-start</li>
+<li>add an observable 'selectedCredential' to the application model</li>
+<li>add bindings to the list item to set the selected credential</li>
+<li>subscribe to the selection change to set focus on appropriate form field (.site)</li>
+<li>automatically select a new item on creation and set focus to appropriate form field (.username) </li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-2-end
+</code></pre>
+
+<h2>Exercise 3: filter list entries</h2>
+
+<pre><code># git checkout exercise-3-start
+</code></pre>
+
+<ul>
+<li>add text field to list form (below button-bar and above the list) =&gt; git tag: exercise-3-start</li>
+<li>add a filter ko.observable() with an empty string</li>
+<li>add a filteredCredentials as a ko.computed
+
+<ul>
+<li>the implementation creates a filtered array of credentials and returns it</li>
+</ul>
+</li>
+<li>change binding foreach of the list to the filteredCredentials<br>
+</li>
+<li>add value binding to the text field to set the filter query to the model </li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-3-end
+</code></pre>
+
+<h2>Exercise 4a: initalize model from and save to local storage</h2>
+
+<pre><code># git checkout exercise-4-start
+</code></pre>
+
+<ul>
+<li>add markup of save button to button bar =&gt; git tag: exercise-4-start</li>
+<li>add save function to the ApplicationModel</li>
+<li>add load function to the ApplicationModel</li>
+<li>remove sample data from ApplicationModel</li>
+<li>add binding to save button to trigger save function on model</li>
+<li>call load function of model after creation (in ApplicationContoller constructor)</li>
+<li>add style binding to form element to show it only when a list item is selected</li>
+<li>add keyup handler to perform save on ctrl-s</li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-4-end
+</code></pre>
+
+<h2>Exercise 4b: initalize model from and save to remote service</h2>
+
+<p>tbd</p>
+
+<h2>Exercise 5: encrypt/decrypt passwords with sjcl</h2>
+
+<pre><code># git checkout exercise-5-start
+</code></pre>
+
+<h3>step 1: encrypt password when entered</h3>
+
+<ul>
+<li>markup: add markup for 'cleartext password' button below #password-field</li>
+<li>markup: remove binding to cleartext password of #password-field</li>
+<li>add private function getSecret() to ApplicationController
+
+<ul>
+<li>check for available value in private var secretKey</li>
+<li>if no secretKey: ask for master key with prompt("")
+
+<ul>
+<li>set secretKey</li>
+</ul>
+</li>
+<li>return secretKey</li>
+</ul>
+</li>
+<li><p>at the bottom of index.html add: &lt;script src="js/sjcl.js"&gt;&lt;/script&gt;</p></li>
+<li>
+<p>add changePassword member function to ApplicationController</p>
+
+<ul>
+<li>get value of #password-field</li>
+<li>encrypt password with sjcl.encrypt(secretKey, pwd)</li>
+<li>empty password field</li>
+<li>set value of #password-field@placeholder to JSON.parse(pwd).iv</li>
+<li>set result of encryption to the password prop of model.selectedCredential()</li>
+<li>do everyting above in a try-catch block</li>
+</ul>
+</li>
+<li><p>add binding to #password-field to call changePassword() on change</p></li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-5-step-1
+</code></pre>
+
+<h3>step 2: show clear text password</h3>
+
+<ul>
+<li>delete all items without encrypted passwords to avoid problems</li>
+<li>show encrypted password in placeholder attr of #password-field when selection changes (we already subscribed to this.model.selectedCredential; extend logic)</li>
+<li>delete all list items without encrypted passwords to avoid problems</li>
+<li>add member function showCleartextPassword to the ApplicationController
+
+<ul>
+<li>get pwdEncryptData from model.selectedCredential.password()</li>
+<li>get secretKey from getSecret()</li>
+<li>decrypt password with sjcl.decrypt(secretKey, pwdEncryptData) </li>
+<li>update the text of #ct-pwd</li>
+</ul>
+</li>
+<li>add click binding to #ct-pwd to call showCleartextPassword()</li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-5-step-2
+</code></pre>
+
+<h3>step 3: improvements</h3>
+
+<ul>
+<li>change impl of function showCleartextPassword to erase display of cleartext password after 5 sec.</li>
+<li>display an icon when the secretKey is stored in memory
+
+<ul>
+<li>add an observable to the model: this.secret = ko.observable();</li>
+<li>change getSecret to read and store the secret key in the observable</li>
+<li>add binding to #key to display when a model.secret is not null: data-bind="style: {display: secret() ? 'block' : 'none'}"</li>
+</ul>
+</li>
+<li>add removeSecret function to the ApplicationController
+
+<ul>
+<li>unset the secret in the model</li>
+</ul>
+</li>
+<li>add binding to #key to call removeSecret() on click</li>
+</ul><p>Get to this stage by git</p>
+
+<pre><code># git checkout exercise-5-end
+</code></pre>
+
+<h2>Bugfixes</h2>
+
+<ul>
+<li>clear secret when encryption fails</li>
+</ul><h2>optional steps (not implemented yet)</h2>
+
+<ul>
+<li>externalize and inject load/save functions of the model</li>
+<li>when storing credentials, also store current selection and filter to resume UI when restarted</li>
+<li>make sure that master password is never changed or migrate all encrypted parts when changing the master password</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/marcbaechinger">marcbaechinger</a></p>
