@@ -11,6 +11,12 @@
 				that.model.createCredential(site);
 			}
 		};
+		
+		this.model.selectedCredential.subscribe(function (newValue) {
+			if (newValue) {
+				$("#edit-form .site").focus();
+			}
+		});
 	};
 	
 	ApplicationController.prototype.init = function() {
