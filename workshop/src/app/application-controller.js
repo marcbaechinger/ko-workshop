@@ -39,8 +39,15 @@
 			}
 		};
 		this.showCleartextPassword = function () {
-			var pwd = sjcl.decrypt(getSecret(), that.model.selectedCredential().password());
-			$("#ct-pwd").html(pwd);
+			var pwd;
+			if (!that.cleartextTimeout) {
+				pwd = sjcl.decrypt(getSecret(), that.model.selectedCredential().password());
+				$("#ct-pwd").html(pwd);
+				that.cleartextTimeout = window.setTimeout(function () {
+					$("#ct-pwd").html("show cleartext");
+					delete that.cleartextTimeout;
+				}, 5000);
+			}
 		};
 		this.model.selectedCredential.subscribe(function (newValue) {
 			var pwdEncryptionData, 
