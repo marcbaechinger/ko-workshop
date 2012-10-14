@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="app.css"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Knockout.js - Workshop</title>
+        <meta name="viewport" content="width=device-width">
+        <script src="js/modernizr-2.6.2.min.js?plain=true"> </script>
+    </head>
+    <body>
+	
+	    <div class="navbar" id="navbar">
+			<img src="img/logo.gif" id="logo">
+	    	<div class="navbar-inner">
+		    	<a class="brand" href="#">ko workshop</a>
+		    </div>
+	    </div>
+	
+		<article id="content" class="container">
+				<div class="row-fluid">
+					<form id="credential-form" class="span4 clearfix">
+						<legend>Credentials</legend>
+						<div class="button-bar clearfix">
+							<button type="submit" class="btn btn-primary btn-create">New</button>
+						</div>
+						<ul id="credential-list" class="span12">
+							<li>
+								<b><span></span></b>
+								(<span></span>)
+								<button class="btn btn-mini btn-danger">delete</button>
+							</li>
+						</ul>
+					</form>
+				</div>
+		</article>
+		
+		
+		<script src="js/jquery-1.8.2.min.js?plain=true"></script>
+        <script src="js/knockout-2.1.0.min.js?plain=true"></script>
+        <script src="src/namespace.js?plain=true"></script>
+        <script src="src/app/application-model.js?plain=true"></script>
+        <script src="src/app/application-controller.js?plain=true"></script>
+        <script src="app.js?plain=true"></script>
+    </body>
+</html>
