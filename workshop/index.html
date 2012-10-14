@@ -26,7 +26,8 @@
 					<form id="credential-form" class="span4 clearfix">
 						<legend>Credentials</legend>
 						<div class="button-bar clearfix">
-							<button type="submit" class="btn btn-primary btn-create">New</button>
+							<button type="submit" class="btn btn-primary btn-create"
+								data-bind="click: theapp.app.createCredential">New</button>
 						</div>
 						<ul id="credential-list" class="span12"
 							data-bind="foreach: credentials">
