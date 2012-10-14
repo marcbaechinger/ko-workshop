@@ -28,10 +28,11 @@
 						<div class="button-bar clearfix">
 							<button type="submit" class="btn btn-primary btn-create">New</button>
 						</div>
-						<ul id="credential-list" class="span12">
+						<ul id="credential-list" class="span12"
+							data-bind="foreach: credentials">
 							<li>
-								<b><span></span></b>
-								(<span></span>)
+								<b><span data-bind="text: site"></span></b>
+								(<span data-bind="text: username"></span>)
 								<button class="btn btn-mini btn-danger">delete</button>
 							</li>
 						</ul>
