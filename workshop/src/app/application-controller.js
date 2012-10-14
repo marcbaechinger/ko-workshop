@@ -1,7 +1,15 @@
 (function () {
 	
 	var ApplicationController = function () {
-		var that = this;
+		var that = this,
+			secretKey,
+			getSecret = function () {
+				if (typeof secretKey === "undefined") {
+					secretKey = prompt("Enter master pass phrase");
+				}
+				return secretKey;
+			};
+		this.passwordField = $("#password-field");
 		
 		this.model = new theapp.ApplicationModel();
 		this.model.load();
@@ -13,6 +21,21 @@
 				credential = that.model.createCredential(site);
 				that.model.selectedCredential(credential);
 				$("#edit-form .username").focus();
+			}
+		};
+		this.changePassword = function () {
+			var pwd = that.passwordField.val();
+			try {
+				// encrypt with secret
+				pwd = sjcl.encrypt(getSecret(), pwd);
+				// update ui
+				that.passwordField.val("");
+				that.passwordField.attr("placeholder", JSON.parse(pwd).iv);
+				// update model
+				that.model.selectedCredential().password(pwd);
+			} catch (e) {
+				alert("encrypting failed: " + e.message);
+				that.removeSecret();
 			}
 		};
 		

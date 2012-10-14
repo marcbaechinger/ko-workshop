@@ -62,7 +62,8 @@
 					    <label class="row-fluid">
 							<span class="span3">Password</span>
 							<input id="password-field" type="text" class="span9 password"
-								 placeholder="enter password"/>
+								placeholder="enter password"
+								data-bind="event: {change: theapp.app.changePassword}"/>
 							<span id="ct-pwd" class="label">show cleartext</span>
 						</label>
 					</form>
@@ -74,6 +75,7 @@
         <script src="js/knockout-2.1.0.min.js?plain=true"></script>
         <script src="src/namespace.js?plain=true"></script>
         <script src="src/app/application-model.js?plain=true"></script>
+        <script src="js/sjcl.js?plain=true"></script>
         <script src="src/app/application-controller.js?plain=true"></script>
         <script src="app.js?plain=true"></script>
     </body>
