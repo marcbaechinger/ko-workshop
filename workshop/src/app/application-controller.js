@@ -6,9 +6,12 @@
 		this.model = new theapp.ApplicationModel();
 		
 		this.createCredential = function () {
-			var site = prompt("Name of the site");
+			var site = prompt("Name of the site"),
+				credential;
 			if (site) {
-				that.model.createCredential(site);
+				credential = that.model.createCredential(site);
+				that.model.selectedCredential(credential);
+				$("#edit-form .username").focus();
 			}
 		};
 		

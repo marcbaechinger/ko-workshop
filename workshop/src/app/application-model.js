@@ -23,6 +23,7 @@
 		this.createCredential = function (site) {
 			var credentials = new Credentials(nextId++, site);
 			this.credentials.push(credentials);
+			return credentials;
 		};
 		
 		this.removeCredential = function (credential) {
