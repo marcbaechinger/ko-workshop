@@ -4,6 +4,13 @@
 		var that = this;
 		
 		this.model = new theapp.ApplicationModel();
+		
+		this.createCredential = function () {
+			var site = prompt("Name of the site");
+			if (site) {
+				that.model.createCredential(site);
+			}
+		};
 	};
 	
 	ApplicationController.prototype.init = function() {
